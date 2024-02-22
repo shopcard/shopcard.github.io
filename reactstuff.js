@@ -8,24 +8,8 @@ import {
 
 export default function App() {
   return (
-    <ThirdwebProvider activeChain="mumbai"
-      clientId="YOUR_CLIENT_ID"
-      locale={en()}
-      supportedWallets={[
-        metamaskWallet(),
-        localWallet(),
-        embeddedWallet({
-          auth: {
-            options: [
-              "email",
-              "google",
-              "apple",
-              "facebook",
-            ],
-          },
-        }),
-      ]}
-    >
+    <div id="cashbut"></div>
+    <ThirdwebProvider activeChain="mumbai" clientId="YOUR_CLIENT_ID" locale={en()} supportedWallets={[metamaskWallet(), localWallet(), embeddedWallet({ auth:{options:["email","google","apple","facebook",],},}),]}>
       <ConnectWallet
         theme={"dark"}
         modalSize={"compact"}

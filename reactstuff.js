@@ -8,8 +8,7 @@ import {
 
 export default function App() {
   return (
-    <ThirdwebProvider
-      activeChain="mumbai"
+    <ThirdwebProvider activeChain="mumbai"
       clientId="YOUR_CLIENT_ID"
       locale={en()}
       supportedWallets={[

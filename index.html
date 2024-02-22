@@ -47,7 +47,7 @@
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     }
     .container {
-      padding: 2px 16px;
+      padding: 2px 6px;
     }
     </style>
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
@@ -73,7 +73,7 @@
         return <h1>Does this work?!</h1>;
       }
 
-      const container = document.getElementById('home');
+      const container = document.getElementById('buy');
       const root = ReactDOM.createRoot(container);
       root.render(<Hello />)
         root.render(<App />)
@@ -91,7 +91,7 @@
       <img src="images/LMAO.jpeg" alt="Avatar" style="width:100%">
       <div class="container">
     <center><h4><b>Skill Issue</b></h4>
-    <p>You already own this card.</p></center>
+    <div id="buy"></div>
   </div>
 </div
     </a>

@@ -53,7 +53,15 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="module" src="reactstuff.js"></script>
+    <script>
+        import {
+          ThirdwebProvider,
+          ConnectWallet,
+          metamaskWallet,
+          localWallet,
+          embeddedWallet,
+        } from "@thirdweb-dev/react";
+    </script>
 </head>
 <body>
     <div class="topnav">
@@ -68,15 +76,6 @@
             </h1>
         </center>
     </a>
-    <script type="text/babel">
-      function Hello() {
-        return <h1>Does this work?!</h1>;
-      }
-
-      const container = document.getElementById('buy');
-      const root = ReactDOM.createRoot(container);
-      root.render(<Hello />)
-    </script>
     <a name="about">
         <h4>
             About the game
@@ -85,12 +84,42 @@
         Aldo's Cards is a strategic card game that utilizes Web3 components to maximize enjoyability and security! Use NFT cards to boost your power and crush your opponents! (insert more corny text here)
         </p>
     </a>
+    <script type="text/babel">
+    function App() {
+    return (
+      React.createElement(ThirdwebProvider, { 
+        activeChain: "mumbai", 
+        clientId: "YOUR_CLIENT_ID", 
+        locale: en(), 
+        supportedWallets: [
+          metamaskWallet(), 
+          localWallet(), 
+          embeddedWallet({
+            auth: {
+              options: ["email", "google", "apple", "facebook"],
+            },
+          }),
+        ],
+      },
+      React.createElement(ConnectWallet, {
+        theme: "dark",
+        modalSize: "compact",
+        modalTitleIconUrl: "https://shopcard.github.io/images/LMAO.jpeg",
+        showThirdwebBranding: false,
+      }))
+    );
+  }
+  ReactDOM.render(
+    React.createElement(App),
+    document.getElementById('root')
+  );
+</script>
     <a name="shop">
       <div class="card">
       <img src="images/LMAO.jpeg" alt="Avatar" style="width:100%">
       <div class="container">
     <center><h4><b>Skill Issue</b></h4>
-    <div id="buy"></div>
+    <div id="root"></div>
   </div>
 </div
     </a>

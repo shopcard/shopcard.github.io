@@ -7,9 +7,9 @@ import {
 } from "@thirdweb-dev/react";
 
 export default function App() {
-  return
+  return (
     <ThirdwebProvider
-      activeChain="mumbai"
+      activeChain="ethereum"
       clientId="YOUR_CLIENT_ID"
       locale={en()}
       supportedWallets={[
@@ -23,4 +23,5 @@ export default function App() {
         modalSize={"wide"}
       />
     </ThirdwebProvider>
+  );
 }

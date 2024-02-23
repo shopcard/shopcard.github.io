@@ -66,7 +66,7 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
-    <script type="module" src="reactstuff.js"></script>
+    <script type="module" src="reactstuff.tsx"></script>
     </script>
 </head>
 <body>
@@ -83,6 +83,15 @@
        console.log("No wallet");
       }
     }
+    </script>
+    <script type="text/babel">
+      function Hello() {
+        return <h1>Hello World!</h1>;
+      }
+
+      const container = document.getElementById('mydiv');
+      const root = ReactDOM.createRoot(container);
+      root.render(<Hello />)
     </script>
     <div class="topnav">
         <a class="active" href="#home">Home</a>
@@ -111,6 +120,7 @@
     <center><h4><b>Skill Issue</b></h4>
         0.009 ETC*</br>
     <input type="button" value="Auto Connect" class="button" onclick="connect();">
+    <div id="root></div>
     </center>
   </div>
 </div

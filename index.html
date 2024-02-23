@@ -53,11 +53,25 @@
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
-    <script type="module" src="reactstuff.js">
     </script>
 </head>
 <body>
     <script>
+    async function connectMM() {
+      if (window.ethereum) {
+        if (window.ethereum.isMetaMask == false) {
+             console.log("Wallet is not MetaMask");
+         }
+         await window.ethereum.request({ method: "eth_requestAccounts" });
+         window.web3 = new Web3(window.ethereum);
+         const account = web3.eth.accounts;
+         //Get the current MetaMask selected/active wallet
+         const walletAddress = account.givenProvider.selectedAddress;
+         console.log(`Wallet: ${walletAddress}`);
+      } else {
+       console.log("No wallet");
+      }
+    }
     async function connect() {
       if (window.ethereum) {
          await window.ethereum.request({ method: "eth_requestAccounts" });
@@ -66,7 +80,6 @@
          //Get the current MetaMask selected/active wallet
          const walletAddress = account.givenProvider.selectedAddress;
          console.log(`Wallet: ${walletAddress}`);
-      
       } else {
        console.log("No wallet");
       }
@@ -98,7 +111,8 @@
       <div class="container">
     <center><h4><b>Skill Issue</b></h4>
         0.009 ETC*
-    <input type="button" value="Connect Wallet" onclick="connect();">
+    <input type="button" value="Connect with Metamask" onclick="connectMM();">
+    <input type="button" value="Auto Connect (uses any available wallet)" onclick="connect();">
     </center>
   </div>
 </div

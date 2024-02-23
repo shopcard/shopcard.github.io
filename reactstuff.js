@@ -7,7 +7,7 @@ import {
 } from "@thirdweb-dev/react";
 
 export default function App() {
-  return (
+  return
     <ThirdwebProvider
       activeChain="mumbai"
       clientId="YOUR_CLIENT_ID"
@@ -23,5 +23,4 @@ export default function App() {
         modalSize={"wide"}
       />
     </ThirdwebProvider>
-  );
 }

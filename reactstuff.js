@@ -2,20 +2,25 @@ import {
   ThirdwebProvider,
   ConnectWallet,
   metamaskWallet,
-  localWallet,
-  embeddedWallet,
+  coinbaseWallet,
+  trustWallet,
 } from "@thirdweb-dev/react";
 
 export default function App() {
   return (
-    <ThirdwebProvider activeChain="mumbai" clientId="YOUR_CLIENT_ID" locale={en()} supportedWallets={[metamaskWallet(), localWallet(), embeddedWallet({ auth:{options:["email","google","apple","facebook",],},}),]}>
+    <ThirdwebProvider
+      activeChain="mumbai"
+      clientId="YOUR_CLIENT_ID"
+      locale={en()}
+      supportedWallets={[
+        metamaskWallet({ recommended: true }),
+        coinbaseWallet(),
+        trustWallet(),
+      ]}
+    >
       <ConnectWallet
         theme={"dark"}
-        modalSize={"compact"}
-        modalTitleIconUrl={
-          "https://shopcard.github.io/images/LMAO.jpeg"
-        }
-        showThirdwebBranding={false}
+        modalSize={"wide"}
       />
     </ThirdwebProvider>
   );

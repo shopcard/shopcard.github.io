@@ -6,7 +6,7 @@ import {
   trustWallet,
 } from "@thirdweb-dev/react";
 
-export default function App() {
+function App() {
   return (
     <ThirdwebProvider
       activeChain="ethereum"
@@ -25,3 +25,5 @@ export default function App() {
     </ThirdwebProvider>
   );
 }
+
+export function App();

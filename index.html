@@ -52,14 +52,25 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4-rc.1/web3.min.js"></script>
     <script type="module" src="reactstuff.js">
     </script>
 </head>
 <body>
     <script>
-        const container = document.getElementById('root');
-        const root = ReactDOM.createRoot(container);
-        root.render(<p>Hello</p>);
+    async function connect() {
+      if (window.ethereum) {
+         await window.ethereum.request({ method: "eth_requestAccounts" });
+         window.web3 = new Web3(window.ethereum);
+         const account = web3.eth.accounts;
+         //Get the current MetaMask selected/active wallet
+         const walletAddress = account.givenProvider.selectedAddress;
+         console.log(`Wallet: ${walletAddress}`);
+      
+      } else {
+       console.log("No wallet");
+      }
+    }
     </script>
     <div class="topnav">
         <a class="active" href="#home">Home</a>
@@ -87,7 +98,7 @@
       <div class="container">
     <center><h4><b>Skill Issue</b></h4>
         You already own this card.
-    <div id="root"></div>
+    <input type="button" value="Connect Wallet" onclick="connect();">
     </center>
   </div>
 </div
